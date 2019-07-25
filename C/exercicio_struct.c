@@ -39,7 +39,7 @@ int main(void)
     for (int indice = 0; indice < 2; indice++) {
         printf("\nNome: %s", produtos[indice].nome);
         printf("\nDescrição: %s", produtos[indice].descricao);
-        printf("\nPreço: %.2fR$", produtos[indice].preco);
+        printf("\nPreço: R$%.2f", produtos[indice].preco);
         printf("\nTamanho: %d", produtos[indice].tamanho);
 
     }
