@@ -1,19 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct Precos
+{
+    float price;
+    float oldPrice;
+    int installmentCount;
+    float installmentValue;
+};
+
 struct Produto
 {
     char *nome;
     char *descricao;
-    float preco;
+    struct Precos precos;
     int tamanho;
 };
 
+
 int main(void)
 {
-    struct Produto produtos[2];
+    int quantidadeDeProdutos;
 
-    for (int indice = 0; indice < 2; indice++)
+    printf("Digite a quantidade de produtos que deseja inserir: ");
+    scanf("%d", &quantidadeDeProdutos);
+
+    struct Produto produtos[quantidadeDeProdutos];
+
+    for (int indice = 0; indice < quantidadeDeProdutos; indice++)
     {
         
         struct Produto produto;
@@ -21,11 +35,11 @@ int main(void)
         produto.nome = (char *)malloc(10);
         produto.descricao = (char *)malloc(10);
 
-        printf("Digite o nome do produto (sem espaços): ");
+        printf("\nDigite o nome do produto (sem espaços): ");
         scanf("%s", produto.nome);
 
         printf("Digite o preço do produto (com ponto no lugar de virgula): ");
-        scanf("%f", &(produto.preco));
+        scanf("%f", &(produto.precos.price));
 
         printf("Digite a descrição do produto (sem espaços): ");
         scanf("%s", produto.descricao);
@@ -36,10 +50,10 @@ int main(void)
         produtos[indice] = produto;
     }
 
-    for (int indice = 0; indice < 2; indice++) {
-        printf("\nNome: %s", produtos[indice].nome);
+    for (int indice = 0; indice < quantidadeDeProdutos; indice++) {
+        printf("\n\nNome: %s", produtos[indice].nome);
         printf("\nDescrição: %s", produtos[indice].descricao);
-        printf("\nPreço: R$%.2f", produtos[indice].preco);
+        printf("\nPreço: R$%.2f", produtos[indice].precos.price);
         printf("\nTamanho: %d", produtos[indice].tamanho);
 
     }
